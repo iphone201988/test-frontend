@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Verify OTP</title>
+
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+  />
+</head>
+<body>
+
+<div class="container mt-4">
+  <section class="vh-100">
+    <div class="container-fluid h-custom">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+
+        <!-- Image (same style as other pages) -->
+        <div class="col-md-9 col-lg-6 col-xl-5">
+          <img
+            src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp"
+            class="img-fluid"
+            alt="Verify OTP"
+          />
+        </div>
+
+        <!-- Form -->
+        <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
+          <form id="verifyForm">
+
+            <p class="text-center h1 fw-bold mb-4 mx-1 mx-md-4 mt-4">
+              Verify OTP
+            </p>
+
+            <p class="text-muted mb-4 text-center">
+              Enter the OTP sent to your email and set a new password.
+            </p>
+
+            <!-- Email input -->
+            <div class="mb-3">
+              <label for="verifyEmail" class="form-label">Enter OTP</label>
+              <input
+                type="string"
+                id="verifyOtp"
+                class="form-control form-control-lg"
+                placeholder="OneTimePassword"
+                required
+              />
+            </div>
+            <div class="text-center mt-4">
+                <button
+                  type="button"
+                  id="resetPasswordBtn"
+                  class="btn btn-primary btn-lg px-5"
+                >
+                  Reset Password
+                </button>
+              </div>
+              <script src="verify-otp.js"> </script>
+              
+            </body>
+            </html>

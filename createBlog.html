@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Create Blog</title>
+
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+  />
+</head>
+<body>
+
+<!-- Navigation Bar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="index.html">Dashboard</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item">
+          <a class="nav-link active" href="create-blog.html">Create Blog</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="blog.html">Blog</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="create-project.html">Create Project</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="project.html">Project</a>
+        </li>
+        <li class="nav-item">
+          <button class="nav-link btn btn-link text-danger" id="logoutbtn">Logout</button>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Main Content -->
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <h2 class="mb-4">Create New Blog Post</h2>
+      
+      <form id="createBlogForm">
+        <!-- Blog Title -->
+        <div class="mb-4">
+          <label for="blogTitle" class="form-label">Title</label>
+          <input
+            type="text"
+            id="blogTitle"
+            class="form-control form-control-lg"
+            placeholder="Enter blog title"
+            required
+          />
+        </div>
+
+        <!-- Blog Description -->
+        <div class="mb-4">
+          <label for="blogDescription" class="form-label">Description</label>
+          <textarea
+            id="blogDescription"
+            class="form-control"
+            rows="10"
+            placeholder="Write your blog description here..."
+            required
+          ></textarea>
+        </div>
+
+        <!-- Blog Image -->
+        <div class="mb-4">
+          <label for="blogImage" class="form-label">Image</label>
+          <input
+            type="file"
+            id="blogImage"
+            class="form-control"
+            accept="image/*"
+            required
+          />
+        </div>
+
+        <!-- Buttons -->
+        <div class="d-flex gap-3">
+          <button type="submit" class="btn btn-primary btn-lg">Create Blog</button>
+          <a href="index.html" class="btn btn-outline-secondary btn-lg">Cancel</a>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+<script src="createBlog.js"></script>
+
+
+</body>
+</html>

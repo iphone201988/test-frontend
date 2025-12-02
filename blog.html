@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>All Blogs</title>
+
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+  />
+</head>
+<body>
+
+ <!-- Navigation Bar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="index.html">Dashboard</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="createBlog.html">Create Blog</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" href="blog.html">Blog</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="create-project.html">Create Project</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="project.html">Project</a>
+        </li>
+        <li class="nav-item">
+          <button class="nav-link btn btn-link text-danger" id="logoutbtn">Logout</button>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav> 
+
+<div class="container mt-4">
+  <h2>All Blogs</h2>
+  <div id="blogList" class="row mt-3"></div>
+</div>
+
+<script src="blog.js"></script>
+
+<!-- Main Content -->
+<!-- <div class="container mt-5">
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h2>All Blogs</h2>
+    <a href="createBlog.html" class="btn btn-primary">+ Create New Blog</a>
+  </div> -->
+
+  <!-- Blog List -->
+  <div id="blogList" class="row g-4">
+    <!-- Blogs will be loaded here -->
+  </div>
+
+  <!-- Empty State -->
+  <!-- <div id="emptyState" class="text-center py-5" style="display: none;">
+    <h4 class="text-muted">No blogs found</h4>
+    <p class="text-muted">Create your first blog post to get started!</p>
+    <a href="create-blog.html" class="btn btn-primary mt-3">Create Blog</a>
+  </div>
+</div> -->
+
+<!-- Edit Modal -->
+<!-- <div class="modal fade" id="editModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Edit Blog</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form id="editBlogForm">
+          <input type="hidden" id="editBlogId">
+          
+          <div class="mb-3">
+            <label for="editTitle" class="form-label">Title</label>
+            <input type="text" class="form-control" id="editTitle" required>
+          </div>
+          
+          <div class="mb-3">
+            <label for="editDescription" class="form-label">Description</label>
+            <textarea class="form-control" id="editDescription" rows="8" required></textarea>
+          </div>
+          
+          <div class="mb-3">
+            <label for="editImage" class="form-label">Image (Optional - leave empty to keep current)</label>
+            <input type="file" class="form-control" id="editImage" accept="image/*">
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-primary" id="saveEditBtn">Save Changes</button>
+      </div>
+    </div>
+  </div>
+</div> --> 
+
+<!--<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script> -->
+<!-- <script>
+  // Sample blog data - replace this with API call
+  let blogs = [
+    {
+      id: 1,
+      title: "Getting Started with Web Development",
+      description: "Learn the basics of HTML, CSS, and JavaScript to start your journey in web development. This comprehensive guide will take you through all the fundamentals you need to know.",
+      image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=500",
+      createdAt: "2024-01-15"
+    },
+    {
+      id: 2,
+      title: "Advanced JavaScript Techniques",
+      description: "Dive deep into JavaScript with advanced concepts like closures, promises, and async/await. Master these techniques to become a better developer.",
+      image: "https://images.unsplash.com/photo-1579468118864-1b9ea3c0db4a?w=500",
+      createdAt: "2024-01-20"
+    },
+    {
+      id: 3,
+      title: "Building Responsive Websites",
+      description: "Learn how to create websites that look great on all devices using modern CSS techniques and Bootstrap framework.",
+      image: "https://images.unsplash.com/photo-1547658719-da2b51169166?w=500",
+      createdAt: "2024-01-25"
+    }
+  ];
+
+  // Logout functionality
+  document.getElementById("logoutbtn").addEventListener("click", () => {
+    alert("Logout clicked!");
+    // localStorage.removeItem("token");
+    // window.location.href = "signin.html"; 
+  });
+
+  // View blog details
+  function viewBlog(id) {
+    // Redirect to blog detail page
+    window.location.href = `blog-detail.html?id=${id}`;
+    
+    // In your actual implementation:
+    // window.location.href = `blog-detail.html?id=${id}`;
+  }
+
+  // Load and display blogs
+  function loadBlogs() {
+    const blogList = document.getElementById('blogList');
+    const emptyState = document.getElementById('emptyState');
+    
+    if (blogs.length === 0) {
+      blogList.style.display = 'none';
+      emptyState.style.display = 'block';
+      return;
+    }
+    
+    blogList.style.display = 'flex';
+    emptyState.style.display = 'none';
+    
+    blogList.innerHTML = blogs.map(blog => `
+      <div class="col-md-6 col-lg-4">
+        <div class="card h-100">
+          <img src="${blog.image}" class="card-img-top" alt="${blog.title}" style="height: 200px; object-fit: cover; cursor: pointer;" onclick="viewBlog(${blog.id})">
+          <div class="card-body d-flex flex-column">
+            <h5 class="card-title" style="cursor: pointer;" onclick="viewBlog(${blog.id})">${blog.title}</h5>
+            <p class="card-text text-muted small mb-2">${blog.createdAt}</p>
+            <p class="card-text" style="cursor: pointer;" onclick="viewBlog(${blog.id})">${blog.description.substring(0, 100)}...</p>
+            <div class="mt-auto">
+              <button class="btn btn-sm btn-outline-primary" onclick="event.stopPropagation(); editBlog(${blog.id})">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil" viewBox="0 0 16 16">
+                  <path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z"/>
+                </svg>
+                Edit
+              </button>
+              <button class="btn btn-sm btn-outline-danger" onclick="event.stopPropagation(); deleteBlog(${blog.id})">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+                  <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6Z"/>
+                  <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1ZM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118ZM2.5 3h11V2h-11v1Z"/>
+                </svg>
+                Delete
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    `).join('');
+  }
+
+  // Edit blog function
+  function editBlog(id) {
+    const blog = blogs.find(b => b.id === id);
+    if (!blog) return;
+    
+    document.getElementById('editBlogId').value = blog.id;
+    document.getElementById('editTitle').value = blog.title;
+    document.getElementById('editDescription').value = blog.description;
+    
+    const editModal = new bootstrap.Modal(document.getElementById('editModal'));
+    editModal.show();
+  }
+
+  // Save edited blog
+  document.getElementById('saveEditBtn').addEventListener('click', () => {
+    const id = parseInt(document.getElementById('editBlogId').value);
+    const title = document.getElementById('editTitle').value;
+    const description = document.getElementById('editDescription').value;
+    const imageFile = document.getElementById('editImage').files[0];
+    
+    const blogIndex = blogs.findIndex(b => b.id === id);
+    if (blogIndex !== -1) {
+      blogs[blogIndex].title = title;
+      blogs[blogIndex].description = description;
+      
+      // If new image is uploaded, you would handle it here
+      // For now, we keep the existing image
+      
+      loadBlogs();
+      
+      const editModal = bootstrap.Modal.getInstance(document.getElementById('editModal'));
+      editModal.hide();
+      
+      alert('Blog updated successfully!');
+      
+      // In your actual implementation:
+      // const formData = new FormData();
+      // formData.append('title', title);
+      // formData.append('description', description);
+      // if (imageFile) formData.append('image', imageFile);
+      // 
+      // fetch(`/api/blogs/${id}`, {
+      //   method: 'PUT',
+      //   body: formData
+      // }).then(() => loadBlogs());
+    }
+  });
+
+  // Delete blog function
+  function deleteBlog(id) {
+    if (confirm('Are you sure you want to delete this blog?')) {
+      blogs = blogs.filter(b => b.id !== id);
+      loadBlogs();
+      alert('Blog deleted successfully!');
+      
+      // In your actual implementation:
+      // fetch(`/api/blogs/${id}`, {
+      //   method: 'DELETE'
+      // }).then(() => loadBlogs());
+    }
+  }
+
+  // Load blogs on page load
+  loadBlogs();
+
+  // In your actual implementation, fetch blogs from API:
+  // fetch('/api/blogs')
+  //   .then(response => response.json())
+  //   .then(data => {
+  //     blogs = data;
+  //     loadBlogs();
+  //   });
+</script> -->
+</body>
+</html>
