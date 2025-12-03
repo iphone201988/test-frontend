@@ -6,7 +6,6 @@ document.getElementById("logoutbtn").addEventListener("click",()=>{
 })
 document.getElementById("createBlogForm").addEventListener("submit", async(e) => {
     e.preventDefault();
-    
     const title = document.getElementById("blogTitle").value.trim()
     const description = document.getElementById("blogDescription").value.trim()
     const imageInput = document.getElementById("blogImage")
@@ -30,7 +29,6 @@ document.getElementById("createBlogForm").addEventListener("submit", async(e) =>
     if(imageInput.files && imageInput.files[0]){
         formData.append('images',imageInput.files[0])
     }
-
     try{
         const response = await fetch(`${API_BASE_URL}/blog/createBlog`,{
             method:'POST',
@@ -44,7 +42,7 @@ document.getElementById("createBlogForm").addEventListener("submit", async(e) =>
             alert(data.message || "Failed to create blog");
             return;
           }
-      
+      console.log("5")
           alert(data.message || "Blog created successfully!");
           window.location.href = "blog.html";
         } catch (err) {
